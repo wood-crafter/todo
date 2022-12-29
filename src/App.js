@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import { Authentication, Home } from '../src/views'
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom'
+
+import { RequireAuth } from './providers/require-auth'
+import { AuthProvider } from './providers/use-auth'
+
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/authentication" element={<Authentication />} />
+      <Route path="/" element={(
+          <RequireAuth>
+            <Home></Home>
+          </RequireAuth>
+        )} />
+    </Routes>
+  )
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className='App'>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </div>
+    </Router>
+  )
 }
 
 export default App;
