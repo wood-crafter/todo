@@ -8,17 +8,18 @@ export const Navbar = () => {
         <li>
           <NavLink to="/" className='react-link'>Home</NavLink>
         </li>
+        <div className='middle-blank'></div>
         <li>
-          <NavLink to="/forums" className='react-link'>Forums</NavLink>
+          <NavLink to="/checklist" className='react-link'>Checklist</NavLink>
         </li>
         <li>
-          <NavLink to="/career" className='react-link'>Carrer</NavLink>
+          <NavLink to="/schedule" className='react-link'>Schedule</NavLink>
         </li>
         <li>
-          <NavLink to="/practice" className='react-link'>Practice</NavLink>
+          <NavLink to="/tikop" className='react-link'>Tikop</NavLink>
         </li>
         <li>
-          <NavLink to="/profile" className='react-link'>Profile</NavLink>
+          <NavLink to="/chart" className='react-link'>Chart</NavLink>
         </li>
       </ul>
     </nav>

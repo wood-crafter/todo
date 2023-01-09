@@ -18,6 +18,8 @@
   flex-direction: row;
   justify-content: flex-end;
   list-style-type: none;
+  width: 100%;
+  padding-left: 0;
 }
 
 .react-link {
@@ -47,4 +49,8 @@ li:hover {
 
 .active {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.middle-blank {
+  flex-grow: 1;
 }
