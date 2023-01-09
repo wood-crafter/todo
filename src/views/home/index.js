@@ -5,6 +5,7 @@ export const Home = (props) => {
   return (
     <div className='home'>
       <Navbar></Navbar>
+      <div className='home-body'></div>
     </div>
   )
 }
