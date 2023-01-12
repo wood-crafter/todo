@@ -1,11 +1,7 @@
 import { createContext, useCallback, useContext, useState } from 'react'
+import { postData } from '../utils/fetch-request'
 
 const USER_SS_KEY = '#_user_#'
-const USERS = [
-  {username: 'vnanne', password: '1'},
-  {username: 'gogi', password: '1'},
-  {username: 'aiinauu', password: '1'}
-]
 
 export const AuthContext = createContext(null)
 export const AuthProvider = ({ children }) => {
@@ -34,14 +30,9 @@ export const useAuth = () => {
   return {
     user,
     async attemptLogin (username, password) {
-      let isMatch = false
-      USERS.forEach(element => {
-        if(element.username === username && element.password === password) {
-          isMatch = true
-        }
-      })
+      const { code } = await postData('http://localhost:9083/login', { username, password })
 
-      if (isMatch) {
+      if (code === 200) {
         setUser({ username })
       } else {
         throw new Error('Credentials mismatch...!')
