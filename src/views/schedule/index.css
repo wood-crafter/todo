@@ -10,4 +10,14 @@
 
 .schedule-body {
   flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.options-container {
+  flex-grow: 1;
+}
+
+.time-in-day-container {
+  flex-grow: 3;
 }
