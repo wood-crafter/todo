@@ -15,11 +15,12 @@
 }
 
 .options-container {
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .time-in-day-container {
-  flex-grow: 4.5;
+  flex-grow: 1;
   display: flex;
   flex-direction: row;
 }
@@ -58,4 +59,29 @@
 
 .timestones:last-child {
   flex: 0.5;
+}
+
+.option-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-todo {
+  height: 10vh;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: center;
+}
+
+.calendar {
+  height: fit-content;
+  border-bottom: 1px solid black;
+}
+
+.other-options {
+  flex-grow: 1;
+}
+
+.btn-add-todo {
+  width: 30%;
 }
