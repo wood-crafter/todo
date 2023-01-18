@@ -1,8 +1,8 @@
 import './index.css'
 import 'react-calendar/dist/Calendar.css'
 import { Navbar } from '../../components/navbar/navbar'
-import { TodoPopup } from './popup'
 import Calendar from 'react-calendar'
+import ReactDOM from 'react-dom'
 import { useEffect, useState } from 'react'
 
 export const Schedule = (props) => {
@@ -15,15 +15,23 @@ export const Schedule = (props) => {
   }
 
   const showAddTodo = () => {
-    setIsPopupShowing(true)
+    setIsPopupShowing(!isPopupShowing)
   }
 
+  // TODO: Remove log
   useEffect(() => {
-    console.info(selectedDate)
-  }, [selectedDate])
+    console.info(isPopupShowing)
+  }, [isPopupShowing])
+
+  function TodoPopup() {
+    return ReactDOM.createPortal(
+      <div className='add-todo-popup'></div>,
+      document.querySelector('body')
+    )
+  }
 
   return (
-    <div className='schedule'>
+    <div className='schedule' id='schedule'>
       <Navbar></Navbar>
       <div className='schedule-body'>
         <div className='options-container'>
@@ -31,7 +39,7 @@ export const Schedule = (props) => {
             <button className='btn-add-todo' onClick={showAddTodo} >Should show modal</button>
           </div>
           <div className='calendar option-container'>
-            <Calendar onChange={handleCalendarValueChange} value={selectedDate}/>
+            <Calendar onChange={handleCalendarValueChange} value={selectedDate} />
           </div>
           <div className='other-options option-container'></div>
         </div>
@@ -51,8 +59,7 @@ export const Schedule = (props) => {
         </div>
       </div>
 
-      <TodoPopup className='add-todo-popup'>
-
+      <TodoPopup>
       </TodoPopup>
     </div>
   )

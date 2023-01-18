@@ -89,7 +89,11 @@
 
 .add-todo-popup {
   position: absolute;
+  background-color: red;
+  width: 20rem;
+  height: 20rem;
   z-index: 1;
   top: calc(50% - 10rem);
   left: calc(50% - 10rem);
 }
+
