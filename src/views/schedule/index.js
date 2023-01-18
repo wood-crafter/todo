@@ -14,8 +14,13 @@ export const Schedule = (props) => {
     setSelectedDate(date)
   }
 
-  const showAddTodo = () => {
+  const handleAddTodoClick = (e) => {
+    e.stopPropagation()
     setIsPopupShowing(!isPopupShowing)
+  }
+
+  const hideTodo = () => {
+    setIsPopupShowing(false)
   }
 
   // TODO: Remove log
@@ -33,10 +38,10 @@ export const Schedule = (props) => {
   return (
     <div className='schedule' id='schedule'>
       <Navbar></Navbar>
-      <div className='schedule-body'>
+      <div className='schedule-body' onClick={hideTodo}>
         <div className='options-container'>
           <div className='add-todo option-container'>
-            <button className='btn-add-todo' onClick={showAddTodo} >Should show modal</button>
+            <button className='btn-add-todo' onClick={handleAddTodoClick}>Should show modal</button>
           </div>
           <div className='calendar option-container'>
             <Calendar onChange={handleCalendarValueChange} value={selectedDate} />
@@ -59,8 +64,7 @@ export const Schedule = (props) => {
         </div>
       </div>
 
-      <TodoPopup>
-      </TodoPopup>
+      { isPopupShowing && <TodoPopup></TodoPopup> }
     </div>
   )
 }
